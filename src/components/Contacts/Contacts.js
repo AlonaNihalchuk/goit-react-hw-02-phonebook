@@ -4,7 +4,7 @@ import Filter from './Filter';
 
 class StatisticsSection extends React.Component {
   render() {
-    const { contacts, filterValue, onChange } = this.props;
+    const { contacts, filterValue, onChange, onDelete } = this.props;
     return (
       <section>
         <h2>Contacts</h2>
@@ -15,6 +15,13 @@ class StatisticsSection extends React.Component {
             <li key={contact.id}>
               <p>{contact.name}:</p>
               <p>{contact.number}</p>
+              <button
+                onClick={() => {
+                  onDelete(contact.id);
+                }}
+              >
+                delete
+              </button>
             </li>
           ))}
         </ul>
