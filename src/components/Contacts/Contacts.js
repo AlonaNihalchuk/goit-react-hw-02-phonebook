@@ -1,8 +1,8 @@
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import React from 'react';
 import Filter from './Filter';
 
-class StatisticsSection extends React.Component {
+class Contacts extends React.Component {
   render() {
     const { contacts, filterValue, onChange, onDelete } = this.props;
     return (
@@ -29,4 +29,16 @@ class StatisticsSection extends React.Component {
     );
   }
 }
-export default StatisticsSection;
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+  ),
+  filterValue: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+export default Contacts;
