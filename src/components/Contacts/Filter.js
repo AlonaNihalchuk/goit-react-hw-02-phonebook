@@ -1,9 +1,10 @@
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import style from './Filter.module.css';
 
 const Filter = ({ value, onChange }) => {
   return (
-    <label>
-      Find contact by name
+    <label className={style.filter}>
+      Find contact by name{' '}
       <input
         type="text"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -13,5 +14,9 @@ const Filter = ({ value, onChange }) => {
       ></input>
     </label>
   );
+};
+Filter.propType = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 export default Filter;

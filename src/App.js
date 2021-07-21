@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Form from './components/Form/Form';
@@ -16,7 +16,6 @@ class App extends React.Component {
   };
 
   formSubmitHandler = ({ name, number }) => {
-    // const { contacts } = this.state;
     const newContact = {
       id: uuidv4(),
       name,
@@ -47,11 +46,11 @@ class App extends React.Component {
   };
   render() {
     return (
-      <section>
+      <section className="phonebook">
         <h1>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
         {this.state.contacts.length === 0 ? (
-          <p>There are no contacts</p>
+          <p className="noContacts">There are no contacts</p>
         ) : (
           <Contacts
             contacts={this.getVisibleContact()}

@@ -1,22 +1,20 @@
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import style from './Form.module.css';
+
 class Form extends React.Component {
   state = {
     name: '',
     number: '',
   };
   handleNameChange = e => {
-    // console.log(e.currentTarget.required);
     this.setState({
-      // name: e.currentTarget.value,
-      // number: e.
       [e.target.name]: e.target.value,
     });
   };
   handleSubmit = e => {
     e.preventDefault();
-    // console.log(this.state);
 
     this.props.onSubmit(this.state);
     this.formReset();
@@ -30,8 +28,9 @@ class Form extends React.Component {
   randomId = uuidv4();
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form onSubmit={this.handleSubmit} className={style.formSection}>
+        <label className={style.formLabel}>
+          Name{' '}
           <input
             onChange={this.handleNameChange}
             value={this.state.name}
@@ -42,8 +41,9 @@ class Form extends React.Component {
             required
           />
         </label>
-        <br />
-        <label>
+
+        <label className={style.formLabel}>
+          Phone{' '}
           <input
             onChange={this.handleNameChange}
             value={this.state.number}
@@ -54,10 +54,21 @@ class Form extends React.Component {
             required
           />
         </label>
-        <br />
-        <button type="submit">Save</button>
+
+        <button type="submit" className={style.formBtn}>
+          Save
+        </button>
       </form>
     );
   }
 }
+Form.propType = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  pattern: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 export default Form;
