@@ -15,6 +15,7 @@ const Filter = ({ value, onChange }) => {
     </label>
   );
 };
+
 Filter.propType = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,

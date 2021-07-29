@@ -1,8 +1,9 @@
 import './App.css';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Form from './components/Form/Form';
-import Contacts from './components/Contacts/Contacts';
+import Form from '../Form/Form';
+import Contacts from '../Contacts/Contacts';
+import Filter from '../Filter/Filter';
 
 class App extends React.Component {
   state = {
@@ -49,16 +50,12 @@ class App extends React.Component {
       <section className="phonebook">
         <h1>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
-        {this.state.contacts.length === 0 ? (
-          <p className="noContacts">There are no contacts</p>
-        ) : (
-          <Contacts
-            contacts={this.getVisibleContact()}
-            filterValue={this.state.filter}
-            onChange={this.changeFilter}
-            onDelete={this.deleteContact}
-          />
-        )}
+        <h2 className="contactsHead">Contacts </h2>
+        <Filter value={this.state.filter} onChange={this.changeFilter} />
+        <Contacts
+          contacts={this.getVisibleContact()}
+          onDelete={this.deleteContact}
+        />
       </section>
     );
   }

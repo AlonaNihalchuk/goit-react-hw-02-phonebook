@@ -4,6 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 import style from './Form.module.css';
 
 class Form extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     name: '',
     number: '',
@@ -62,13 +66,5 @@ class Form extends React.Component {
     );
   }
 }
-Form.propType = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  pattern: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
+
 export default Form;
