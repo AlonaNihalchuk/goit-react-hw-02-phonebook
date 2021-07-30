@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import style from './ContactItem.module.css';
 
-const ContactItem = ({ contact, contactName, contactNumber, onClick }) => {
+const ContactItem = ({ contact, onClick }) => {
   return (
     <li className="">
-      <p className="">{contactName}:</p>
-      <p>{contactNumber}</p>
+      <p className="">{contact.name}:</p>
+      <p>{contact.number}</p>
       <button
         className={style.contactsButton}
         onClick={() => onClick(contact.id)}
@@ -18,6 +18,7 @@ const ContactItem = ({ contact, contactName, contactNumber, onClick }) => {
 
 ContactItem.propTypes = {
   contact: PropTypes.object,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ContactItem;
